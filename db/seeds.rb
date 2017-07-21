@@ -1,7 +1,81 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'database_cleaner'
+
+DatabaseCleaner.clean_with(:truncation)
+
+class Seed
+  def initialize
+    generate_users
+    # generate_plant_families
+    generate_flower_photos
+    # generate_favorites
+    # generate_comments
+    # generate_habitats
+    # generate plant_family_habitats
+    # generate_locations
+  end
+  
+  def generate_users
+    10.times do |i|
+      User.create!(
+        email: Faker::Internet.unique.email,
+        username: Faker::HitchhikersGuideToTheGalaxy.unique.character
+      )
+      puts "#{i} user created"
+    end
+  end
+  
+  def generate_flower_photos
+    10.times do |i|
+      user = User.find(Random.new.rand(1..User.count))
+      plant_family = PlantFamily.create!(
+        common_name: "Lily", 
+        taxonomic_name: Faker::Lorem.unique.word,
+        growing_conditions: "sunlight",
+        sample_photo_storage_url: "https://photo"
+        )
+      habitat = Habitat.create!(
+        name: Faker::LordOfTheRings.unique.location
+        )
+      location = Location.create(
+        city: Faker::Address.city,
+        country: Faker::Address.country
+      )
+      FlowerPhoto.create!(
+        assigned_name: Faker::Food.ingredient,
+        storage_url: Faker::Internet.unique.url,
+        user_id: user.id,
+        plant_family_id: 1,
+        habitat_id: 1,
+        location_id: 1
+      )
+      generate_gvision_descriptions(FlowerPhoto.last)
+      generate_favorites(FlowerPhoto.last)
+      puts "#{i} flower photo created"
+    end
+  end
+  
+  def generate_gvision_descriptions(flower_photo)
+    3.times do |i|
+      GvisionDescription.create!(
+        name: Faker::Coffee.notes,
+        flower_photo_id: flower_photo.id
+      )
+      puts "#{i} gvision description created"
+    end
+  end
+  
+  def generate_favorites(flower_photo)
+    3.times do |i|
+      flower_photo.favorites.create!(
+        favorite: true,
+        user_id: Random.new.rand(1..User.count)
+      )
+      puts "#{i} favorite created"
+    end
+  end
+  
+end
+
+Seed.new
+
+

@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="400" y="402" name="users">
+</datatypes><table x="141" y="328" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -51,7 +51,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="577" y="173" name="flower_pictures">
+<table x="715" y="112" name="flower_photos">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -79,7 +79,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="825" y="109" name="plant_family">
+<table x="936" y="112" name="plant_family">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -123,16 +123,16 @@
 <part>id</part>
 </key>
 </table>
-<table x="310" y="231" name="comments">
+<table x="334" y="172" name="comments">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="content" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="flower_picture_id" null="1" autoincrement="0">
+<row name="flower_photo_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="flower_pictures" row="id" />
+<default>NULL</default><relation table="flower_photos" row="id" />
 </row>
 <row name="id_users" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -156,7 +156,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="254" y="37" name="flower_picture_locations">
+<table x="254" y="37" name="flower_photo_locations">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -164,9 +164,25 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="locations" row="id" />
 </row>
-<row name="flower_picture_id" null="1" autoincrement="0">
+<row name="flower_photo_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="flower_pictures" row="id" />
+<default>NULL</default><relation table="flower_photos" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="426" y="370" name="favorite_pictures">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="id_users" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="id_flower_photos" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="flower_photos" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
