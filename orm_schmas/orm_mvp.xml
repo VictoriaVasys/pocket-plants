@@ -51,7 +51,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="579" y="181" name="flower_pictures">
+<table x="577" y="173" name="flower_pictures">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -59,9 +59,6 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="non_invasive?" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="native?" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="habitat_located" null="1" autoincrement="0">
@@ -75,11 +72,14 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="plant_family" row="id" />
 </row>
+<row name="native?" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="825" y="87" name="plant_family">
+<table x="825" y="109" name="plant_family">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -87,6 +87,36 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="taxonomic_name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="ecosystem_benefits" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="growing_conditions" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="number_of_petals" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="flower_colors" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="habitats" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="flower_symmetry" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="flowering_period" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="growth_habits" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="leaf_arrangement" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="leaf_type" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -112,7 +142,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="58" y="28" name="flower_locations">
+<table x="57" y="103" name="locations">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -126,13 +156,13 @@
 <part>id</part>
 </key>
 </table>
-<table x="266" y="63" name="flower_picture_locations">
+<table x="254" y="37" name="flower_picture_locations">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="flower_location_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="flower_locations" row="id" />
+<default>NULL</default><relation table="locations" row="id" />
 </row>
 <row name="flower_picture_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
