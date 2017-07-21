@@ -144,9 +144,6 @@
 <row name="generic_photo_storage_url" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
-<row name="non_invasive?" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
-<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
