@@ -3,7 +3,7 @@
 ## Status: In-Progress
 
 ## Schema
-![Pocket plants object relational map image](/../orm-schema/app/assets/images/orm_mvp.png?raw=true "Pocket plants object Relational Map Image")
+![Pocket plants object relational map image](/../orm-schema/lib/orm_schema/images/orm_mvp.png?raw=true "Pocket plants object Relational Map Image")
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
