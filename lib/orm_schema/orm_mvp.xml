@@ -41,7 +41,7 @@
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="determined_name" null="1" autoincrement="0">
+<row name="assigned_name" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
 <row name="storage_url" null="1" autoincrement="0">
@@ -129,7 +129,7 @@
 <row name="growing_conditions" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
-<row name="generic_photo_storage_url" null="1" autoincrement="0">
+<row name="sample_photo_storage_url" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
