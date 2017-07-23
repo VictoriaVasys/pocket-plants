@@ -7,11 +7,13 @@ gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.5'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt'
 gem 'figaro'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
 group :development, :test do
   gem 'pry-rails'
