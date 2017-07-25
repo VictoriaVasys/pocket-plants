@@ -1,0 +1,1 @@
+json.array! @plant_families, partial: 'api/v1/plant_families/plant_family', as: :plant_family
