@@ -6,7 +6,7 @@ class FlowerPhoto < ApplicationRecord
   belongs_to :user
   belongs_to :habitat
   belongs_to :location
+  has_many :gvision_descriptions
   has_many :comments, as: :commentable
   has_many :favorites, as: :favorable
-  has_many :users
 end

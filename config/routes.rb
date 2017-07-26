@@ -8,6 +8,11 @@ Rails.application.routes.draw do
       end
       resources :plant_families, only: [:index, :show]
       
+      namespace :flower_photos do
+        get 'find', to: 'find#show'
+      end
+      resources :flower_photos, only: [:index, :show]
+      
     end
   end
 end

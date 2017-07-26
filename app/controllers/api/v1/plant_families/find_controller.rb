@@ -6,7 +6,7 @@ class Api::V1::PlantFamilies::FindController < ApplicationController
 
   private
   def find_params(attribute)
-    render json: PlantFamily.find_by("#{attribute}": params[:"#{attribute}"])
+    @plant_family = PlantFamily.find_by("#{attribute}": params[:"#{attribute}"])
   end
 
   def plant_family_params
