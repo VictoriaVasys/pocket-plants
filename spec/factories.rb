@@ -4,9 +4,11 @@ FactoryGirl.define do
     flower_photo nil
   end
   
-  factory :favorite_picture do
+  factory :favorite do
+    favorite true
     user nil
-    flower_photo nil
+    favorable_type nil
+    favorable_id nil
   end
   
   factory :comment do
@@ -16,19 +18,43 @@ FactoryGirl.define do
   end
   
   factory :flower_photo do
-    assigned_name "MyText"
-    storage_url "MyText"
-    plant_family nil
-    user nil
-    location nil
+    before(:create) do |flower_photo|
+      flower_photo.user = create(:user)
+      flower_photo.habitat = create(:habitat)
+      flower_photo.location = create(:location)
+      flower_photo.plant_family = create(:plant_family)
+      flower_photo.plant_family = create(:plant_family)
+    end
+    
+    after(:create) do |flower_photo|
+      3.times do 
+        flower_photo.favorites << create(
+          :favorite, 
+          favorable_id: flower_photo.id, 
+          favorable_type: "FlowerPhoto", 
+          user_id: flower_photo.user.id
+        )
+      end  
+    end
+    
+    sequence :assigned_name do |n|
+      "Name#{n}"
+    end
+    sequence :storage_url do |n|
+      "URL#{n}"
+    end
   end
   
   factory :location do
-    address_number 1
-    street_name "MyText"
-    city "MyText"
-    state "MyText"
-    country "MyText"
+    address_number nil
+    street_name nil
+    sequence :city do |n|
+      "City#{n}"
+    end
+    state nil
+    sequence :country do |n|
+      "Iceland#{n}"
+    end
   end
   
   factory :plant_family_habitat do
@@ -37,12 +63,18 @@ FactoryGirl.define do
   end
   
   factory :habitat do
-    name "MyText"
+    sequence :name do |n|
+      "Habitat#{n}"
+    end
   end
   
   factory :user do
-    email "MyText"
-    username "MyText"
+    sequence :email do |n|
+      "email#{n}"
+    end
+    sequence :username do |n|
+      "username#{n}"
+    end
   end
   
   factory :plant_family do
