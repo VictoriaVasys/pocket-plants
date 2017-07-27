@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"></head>
 
   <body>
-    <%= yield %>
+    <div class="wrapper">
+      <%= render partial: '/shared/navbar' %>
+      <h4><%= render partial: 'shared/flash' %></h4>
+      <%= yield %>
+    </div>
   </body>
 </html>

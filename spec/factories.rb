@@ -75,6 +75,8 @@ FactoryGirl.define do
     sequence :username do |n|
       "username#{n}"
     end
+    password "123"
+    password_confirmation "123"
   end
   
   factory :plant_family do
