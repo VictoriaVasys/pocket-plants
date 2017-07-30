@@ -12,4 +12,10 @@ RSpec.describe FlowerPhoto, type: :model do
   it { should have_many :gvision_descriptions}
   it { should have_many :comments}
   it { should have_many :favorites}
+  
+  it "should sanitize a name for urls" do
+    flower_photo = create(:flower_photo)
+    
+    expect(flower_photo.sanitized_name).to eq(flower_photo.assigned_name.split(' ').join('%20'))
+  end
 end

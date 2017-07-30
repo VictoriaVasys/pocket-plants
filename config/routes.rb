@@ -22,6 +22,11 @@ Rails.application.routes.draw do
       end
       resources :flower_photos, only: [:index, :show]
       
+      namespace :users, path: ":username" do
+        namespace :flower_photos, path: ":flower_photo_name" do
+          resources :gvision_descriptions, only: [:index, :show, :create, :update, :destroy]
+        end
+      end
     end
   end
 end

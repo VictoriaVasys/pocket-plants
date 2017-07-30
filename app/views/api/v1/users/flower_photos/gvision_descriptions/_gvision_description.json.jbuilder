@@ -1,0 +1,1 @@
+json.extract! gvision_description, :id, :name
