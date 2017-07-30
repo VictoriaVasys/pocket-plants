@@ -4,7 +4,7 @@ describe "Flower Photos API" do
   attr_reader :flower_photo1, :flower_photo2, :flower_photo3
   
   before do
-    @flower_photo1, @flower_photo2, @flower_photo3 = create_list(:flower_photo, 3)
+    @flower_photo1, @flower_photo2, @flower_photo3 = create_list(:flower_photo_with_favorites, 3)
   end
   
   it "/flower_photos provides plant families & attributes" do

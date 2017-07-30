@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :gvision_description do
-    name "MyText"
+    sequence :name do |n|
+      "Name#{n}"
+    end
     flower_photo nil
   end
   
@@ -23,26 +25,40 @@ FactoryGirl.define do
       flower_photo.habitat = create(:habitat)
       flower_photo.location = create(:location)
       flower_photo.plant_family = create(:plant_family)
-      flower_photo.plant_family = create(:plant_family)
-    end
-    
-    after(:create) do |flower_photo|
-      3.times do 
-        flower_photo.favorites << create(
-          :favorite, 
-          favorable_id: flower_photo.id, 
-          favorable_type: "FlowerPhoto", 
-          user_id: flower_photo.user.id
-        )
-      end  
     end
     
     sequence :assigned_name do |n|
-      "Name#{n}"
+      "Name #{n}"
     end
+    
     sequence :storage_url do |n|
       "URL#{n}"
     end
+    
+    factory :flower_photo_with_gvision_descriptions do
+      after(:create) do |flower_photo|
+        3.times do 
+          flower_photo.gvision_descriptions << create(
+            :gvision_description, 
+            flower_photo_id: flower_photo.id
+          )
+        end 
+      end 
+    end
+    
+    factory :flower_photo_with_favorites do 
+      after(:create) do |flower_photo|
+        3.times do 
+          flower_photo.favorites << create(
+            :favorite, 
+            favorable_id: flower_photo.id, 
+            favorable_type: "FlowerPhoto", 
+            user_id: flower_photo.user.id
+          )
+        end 
+      end 
+    end
+    
   end
   
   factory :location do
