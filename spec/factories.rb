@@ -59,17 +59,6 @@ FactoryGirl.define do
       "URL#{n}"
     end
     
-    factory :flower_photo_with_gvision_descriptions do
-      after(:create) do |flower_photo|
-        3.times do 
-          flower_photo.gvision_descriptions << create(
-            :gvision_description_with_favorites, 
-            flower_photo_id: flower_photo.id
-          )
-        end 
-      end 
-    end
-    
     factory :flower_photo_with_favorites do 
       after(:create) do |flower_photo|
         3.times do 
@@ -77,7 +66,18 @@ FactoryGirl.define do
             :favorite, 
             favorable_id: flower_photo.id, 
             favorable_type: "FlowerPhoto", 
-            user_id: flower_photo.user.id
+            user_id: create(:user).id
+          )
+        end 
+      end 
+    end
+    
+    factory :flower_photo_with_gvision_descriptions do
+      after(:create) do |flower_photo|
+        3.times do 
+          flower_photo.gvision_descriptions << create(
+          :gvision_description_with_favorites, 
+          flower_photo_id: flower_photo.id
           )
         end 
       end 
@@ -90,7 +90,7 @@ FactoryGirl.define do
             :comment_with_favorites, 
             commentable_id: flower_photo.id, 
             commentable_type: "FlowerPhoto", 
-            user_id: flower_photo.user.id
+            user_id: create(:user).id
           )
         end 
       end 

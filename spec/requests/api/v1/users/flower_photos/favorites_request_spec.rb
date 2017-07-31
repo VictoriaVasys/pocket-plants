@@ -22,6 +22,26 @@ describe 'flower photo favorites' do
     expect(favorite["updated_at"]).not_to be_present
   end
   
+  it "returns all favorites" do
+    @flower_photo_2 = create(:flower_photo)
+    @flower_photo_2.favorites.create(
+      favorable_id: flower_photo.id, 
+      favorable_type: "FlowerPhoto", 
+      user_id: flower_photo.user.id
+    )
+    get "/#{flower_photo.user.username}/favorite_flower_photos"
+  
+    expect(response).to have_http_status(201)
+  
+    favorites = JSON.parse(response.body)
+  
+    expect(favorites).to be_an(Array)
+    expect(favorites.count).to eq(2)
+    expect(favorites.first["assigned_name"]).to eq(flower_photo.assigned_name)
+    expect(favorites.first["created_at"]).not_to be_present
+    expect(favorites.first["updated_at"]).not_to be_present
+  end
+  
   it "can delete exisiting favorite" do
     expect(flower_photo.favorites.count).to eq(3)
     
