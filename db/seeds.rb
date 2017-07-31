@@ -1,7 +1,7 @@
-require 'database_cleaner'
-
-DatabaseCleaner.clean_with(:truncation)
-
+# require 'database_cleaner'
+# 
+# DatabaseCleaner.clean_with(:truncation)
+# 
 class Seed
   def initialize
     generate_users
