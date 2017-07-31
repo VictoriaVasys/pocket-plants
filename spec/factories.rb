@@ -16,7 +16,8 @@ FactoryGirl.define do
   factory :comment do
     body "MyText"
     user nil
-    flower_photo nil
+    commentable_type nil
+    commentable_id nil
   end
   
   factory :flower_photo do
@@ -51,6 +52,19 @@ FactoryGirl.define do
             :favorite, 
             favorable_id: flower_photo.id, 
             favorable_type: "FlowerPhoto", 
+            user_id: flower_photo.user.id
+          )
+        end 
+      end 
+    end
+    
+    factory :flower_photo_with_comments do 
+      after(:create) do |flower_photo|
+        3.times do 
+          flower_photo.comments << create(
+            :comment, 
+            commentable_id: flower_photo.id, 
+            commentable_type: "FlowerPhoto", 
             user_id: flower_photo.user.id
           )
         end 
