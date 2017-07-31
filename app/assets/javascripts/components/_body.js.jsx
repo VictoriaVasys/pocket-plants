@@ -1,16 +1,14 @@
 var Body = React.createClass({
   getInitialState() {
-    return { items: [] }
+    return {
+      currentUser: this.props.current_user
+    }
   },
-
-  componentDidMount() {
-    $.getJSON('/users_favorite_flower_photos.json', (response) => { this.setState({ items: response }) });
-  },
-
+  
   render() {
     return (
       <div>
-        <allitems items="{this.state.items}" />
+        <FavoriteFlowerPhotos currentUser="{this.state.currentUser}"/>
       </div>
     )
   }

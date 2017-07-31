@@ -55,9 +55,7 @@ FactoryGirl.define do
       "Name #{n}"
     end
     
-    sequence :storage_url do |n|
-      "URL#{n}"
-    end
+    storage_url "https://00e9e64bac8faaf3ffa8b34c49f36769ce6c63255c4f5f6f2a-apidata.googleusercontent.com/download/storage/v1/b/flower-photos/o/poppy-california-gold-west-x2.jpg?qk=AD5uMEuzalLd48rFlGgI4dFlPKZUgRbHYupGO-iw9_UkuYjQIdaCcNUf7o2u5wekE05ikWBqf51v2-i6CPbZ-c5U20a0w20k1qNSQeUm17xCMBzov2CNz_6Acnm3lwExx_-O-V7u8tc-v58DMiH78_IIPoGSFfZEO8InLpYL7URlrushEwUlo-LuO1Y0wOG46-0zoLnaUMR5Kqyig90DXZdCy7HI0mcDVYlDdZqqDE3TQrYjDc50XT7DF91g05oQuiSmxxnHHGqX34VURVCPMchHjfDf4vOBnNcnxieISB67Eo44NtN0lYkUiZb4T9-0gHOtPxsSx15L5PabJAwE0dmM5vd25WJ3-Ggr_CHVAXmzxY-J2xZkbTvavkGXPoXQg5NQdey_5RSzwb205rR9xWFDX0a2TtuFsLEIRA2KGi6JWPM8hsWwFt__m4Dsa0NEqyq4SplkUfBYiSVAOq1ooIkwyvDzabxptYJjEFjeLvLPZ406IdsREe0MVrA6nOnBTHk8CW4sxg_aMihPVEdr1gPWjrYbE92MO_PIH4xZ_BImvC33WFXSVUjXj33ghoRuhbybdF-YadzUV3-hbXgYawyg6t25KhFt0VLHV14Lg7DuYLQ1-dKqZ0XwtCdh3PvwyI6o9uPHPa9ig8ziqwa8vTbnzA4cUa0m-mQOnJfJB7kHQYypkkjddKeQqloldf7ZLZCzynICWMmDvECBhp7N_tDa_Y0aMWvFAapQcKOXD7QiXky9WhqwMyaHg298LDN80rd5K68Z8rklMsGjaSmptzjcva6gw53P_fg2amrfoP740M6922apvPM"
     
     factory :flower_photo_with_favorites do 
       after(:create) do |flower_photo|

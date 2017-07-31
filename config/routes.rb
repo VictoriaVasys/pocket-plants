@@ -31,6 +31,7 @@ Rails.application.routes.draw do
         namespace :flower_photos do
           get 'find', to: 'find#show'
         end
+        get '/:user_id/favorite_flower_photos' => 'favorites#index', as: :favorite_flower_photos
         resources :flower_photos, only: [:show], concerns: :favorable do
           resources :gvision_descriptions, only: [:create, :destroy] do
             post '/favorites' => 'gvision_descriptions/favorites#create', as: :favorites

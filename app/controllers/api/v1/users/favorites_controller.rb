@@ -2,6 +2,10 @@ class Api::V1::Users::FavoritesController < Api::V1::Users::BaseController
   skip_before_action :authorize_user
   before_action :authenticate_user
   
+  def index
+    @favorite_flower_photos = current_user.favorite_flower_photos
+  end
+  
   def create
     @favorite = flower_photo.favorites.new(user_id: flower_photo.user.id)
     if @favorite.save
