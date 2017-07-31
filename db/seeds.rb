@@ -18,7 +18,9 @@ class Seed
     10.times do |i|
       User.create!(
         email: Faker::Internet.unique.email,
-        username: Faker::HitchhikersGuideToTheGalaxy.unique.character
+        username: Faker::HitchhikersGuideToTheGalaxy.unique.character,
+        password: '123',
+        password_confirmation: '123'
       )
       puts "#{i} user created"
     end
@@ -29,24 +31,13 @@ class Seed
       user = User.find(rand(1..User.count))
       plant_family = PlantFamily.create!(
         common_name: "Lily", 
-        taxonomic_name: Faker::Lorem.unique.word,
-        growing_conditions: "sunlight",
-        sample_photo_storage_url: "https://photo"
+        taxonomic_name: Faker::Lorem.unique.word
         )
-      habitat = Habitat.create!(
-        name: Faker::LordOfTheRings.unique.location
-        )
-      location = Location.create(
-        city: Faker::Address.city,
-        country: Faker::Address.country
-      )
       FlowerPhoto.create!(
         assigned_name: Faker::Food.ingredient,
         storage_url: Faker::Internet.unique.url,
         user_id: user.id,
-        plant_family_id: 1,
-        habitat_id: 1,
-        location_id: 1
+        plant_family_id: 1
       )
       generate_gvision_descriptions(FlowerPhoto.last)
       generate_favorites(FlowerPhoto.last)

@@ -17,14 +17,30 @@ Rails.application.routes.draw do
       end
       resources :plant_families, only: [:index, :show]
       
-      namespace :flower_photos do
-        get 'find', to: 'find#show'
+      concern :favorable do
+        resources :favorites, only: [:create, :destroy]
       end
-      resources :flower_photos, only: [:index, :show]
       
-      namespace :users, path: ":username" do
-        namespace :flower_photos, path: ":flower_photo_name" do
-          resources :gvision_descriptions, only: [:index, :show, :create, :update, :destroy]
+      namespace :flower_photos do
+        get 'find', to: 'find#index'
+        resources :favorites, only: [:create, :destroy]
+      end
+      resources :flower_photos, only: [:index]
+      
+      namespace :users do
+        namespace :flower_photos do
+          get 'find', to: 'find#show'
+        end
+        resources :flower_photos, only: [:show], concerns: :favorable do
+          resources :gvision_descriptions, only: [:create, :destroy] do
+            post '/favorites' => 'gvision_descriptions/favorites#create', as: :favorites
+            delete '/favorites/:id' => 'gvision_descriptions/favorites#destroy', as: :favorite
+          end
+          resources :comments, only: [:index, :show, :create, :update, :destroy] do
+            post '/favorites' => 'comments/favorites#create', as: :favorites
+            delete '/favorites/:id' => 'comments/favorites#destroy', as: :favorite
+          end
+          
         end
       end
     end
