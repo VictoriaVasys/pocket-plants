@@ -17,8 +17,13 @@ Rails.application.routes.draw do
       end
       resources :plant_families, only: [:index, :show]
       
+      concern :favorable do
+        resources :favorites, only: [:create, :destroy]
+      end
+      
       namespace :flower_photos do
         get 'find', to: 'find#index'
+        resources :favorites, only: [:create, :destroy]
       end
       resources :flower_photos, only: [:index]
       
@@ -26,9 +31,9 @@ Rails.application.routes.draw do
         namespace :flower_photos do
           get 'find', to: 'find#show'
         end
-        resources :flower_photos, only: [:show] do
-          resources :gvision_descriptions, only: [:create, :destroy]
-          resources :comments, only: [:index, :show, :create, :update, :destroy]
+        resources :flower_photos, only: [:show], concerns: :favorable do
+          resources :gvision_descriptions, only: [:create, :destroy], concerns: :favorable
+          resources :comments, only: [:index, :show, :create, :update, :destroy], concerns: :favorable
         end
       end
     end

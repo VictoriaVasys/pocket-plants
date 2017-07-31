@@ -7,7 +7,6 @@ FactoryGirl.define do
   end
   
   factory :favorite do
-    favorite true
     user nil
     favorable_type nil
     favorable_id nil
