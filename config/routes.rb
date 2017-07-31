@@ -18,13 +18,16 @@ Rails.application.routes.draw do
       resources :plant_families, only: [:index, :show]
       
       namespace :flower_photos do
-        get 'find', to: 'find#show'
+        get 'find', to: 'find#index'
       end
-      resources :flower_photos, only: [:index, :show]
+      resources :flower_photos, only: [:index]
       
-      namespace :users, path: ":username" do
-        namespace :flower_photos, path: ":flower_photo_name" do
-          resources :gvision_descriptions, only: [:index, :show, :create, :update, :destroy]
+      namespace :users do
+        namespace :flower_photos do
+          get 'find', to: 'find#show'
+        end
+        resources :flower_photos, only: [:show] do
+          resources :gvision_descriptions, only: [:create, :destroy]
         end
       end
     end

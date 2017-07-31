@@ -1,1 +1,0 @@
-json.partial! "api/v1/users/flower_photos/gvision_descriptions/gvision_description", gvision_description: @gvision_description

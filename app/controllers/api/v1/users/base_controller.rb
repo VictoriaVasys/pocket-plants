@@ -16,7 +16,7 @@ private
   end
   
   def personal_asset?
-    current_user.username == params[:username]
+    current_user.id == FlowerPhoto.find(params[:flower_photo_id]).user.id
   end
   
 end
