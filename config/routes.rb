@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         end
         resources :flower_photos, only: [:show] do
           resources :gvision_descriptions, only: [:create, :destroy]
+          resources :comments, only: [:index, :show, :create, :update, :destroy]
         end
       end
     end
