@@ -1,6 +1,6 @@
 class FlowerPhoto < ApplicationRecord
   validates :assigned_name, presence: true, uniqueness: { scope: [:user_id] }
-  validates :storage_url, presence: true, uniqueness: true
+  validates :storage_url, presence: true
   
   belongs_to :plant_family
   belongs_to :user
