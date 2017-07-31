@@ -4,6 +4,19 @@ FactoryGirl.define do
       "Name#{n}"
     end
     flower_photo nil
+    
+    factory :gvision_description_with_favorites do 
+      after(:create) do |gvision_description|
+        3.times do 
+          gvision_description.favorites << create(
+            :favorite, 
+            favorable_id: gvision_description.id, 
+            favorable_type: "GvisionDescription", 
+            user_id: gvision_description.flower_photo.user.id
+          )
+        end 
+      end 
+    end
   end
   
   factory :favorite do
@@ -17,6 +30,19 @@ FactoryGirl.define do
     user nil
     commentable_type nil
     commentable_id nil
+    
+    factory :comment_with_favorites do 
+      after(:create) do |comment|
+        3.times do 
+          comment.favorites << create(
+            :favorite, 
+            favorable_id: comment.id, 
+            favorable_type: "Comment", 
+            user_id: comment.user.id
+          )
+        end 
+      end 
+    end
   end
   
   factory :flower_photo do
@@ -37,7 +63,7 @@ FactoryGirl.define do
       after(:create) do |flower_photo|
         3.times do 
           flower_photo.gvision_descriptions << create(
-            :gvision_description, 
+            :gvision_description_with_favorites, 
             flower_photo_id: flower_photo.id
           )
         end 
@@ -61,7 +87,7 @@ FactoryGirl.define do
       after(:create) do |flower_photo|
         3.times do 
           flower_photo.comments << create(
-            :comment, 
+            :comment_with_favorites, 
             commentable_id: flower_photo.id, 
             commentable_type: "FlowerPhoto", 
             user_id: flower_photo.user.id

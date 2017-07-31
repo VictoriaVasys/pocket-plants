@@ -32,8 +32,15 @@ Rails.application.routes.draw do
           get 'find', to: 'find#show'
         end
         resources :flower_photos, only: [:show], concerns: :favorable do
-          resources :gvision_descriptions, only: [:create, :destroy], concerns: :favorable
-          resources :comments, only: [:index, :show, :create, :update, :destroy], concerns: :favorable
+          resources :gvision_descriptions, only: [:create, :destroy] do
+            post '/favorites' => 'gvision_descriptions/favorites#create', as: :favorites
+            delete '/favorites/:id' => 'gvision_descriptions/favorites#destroy', as: :favorite
+          end
+          resources :comments, only: [:index, :show, :create, :update, :destroy] do
+            post '/favorites' => 'comments/favorites#create', as: :favorites
+            delete '/favorites/:id' => 'comments/favorites#destroy', as: :favorite
+          end
+          
         end
       end
     end

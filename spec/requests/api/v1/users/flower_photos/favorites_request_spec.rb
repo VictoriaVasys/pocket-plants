@@ -10,7 +10,7 @@ describe 'flower photo favorites' do
   end
   
   it "can create new favorite" do
-    post "/api/v1/users/flower_photos/#{flower_photo.id}/favorites?favorite=true"
+    post "/api/v1/users/flower_photos/#{flower_photo.id}/favorites"
   
     expect(response).to have_http_status(201)
   
