@@ -5,8 +5,6 @@ class CreateFlowerPhotos < ActiveRecord::Migration[5.0]
       t.text :storage_url
       t.references :plant_family, foreign_key: true
       t.references :user, foreign_key: true
-      t.references :location, foreign_key: true
-      t.references :habitat, foreign_key: true
 
       t.timestamps
     end

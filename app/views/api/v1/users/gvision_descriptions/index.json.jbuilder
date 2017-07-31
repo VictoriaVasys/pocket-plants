@@ -1,0 +1,1 @@
+json.array! @gvision_descriptions, partial: "api/v1/users/gvision_descriptions/gvision_description", as: :gvision_description

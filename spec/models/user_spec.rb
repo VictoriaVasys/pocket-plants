@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
   it { should have_secure_password }
   
   it { should have_many :flower_photos}
+  it { should have_many :favorite_flower_photos}
   it { should have_many :favorites}
   it { should have_many :comments}
 end
