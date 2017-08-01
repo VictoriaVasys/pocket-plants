@@ -16,6 +16,7 @@ gem 'faraday'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem 'react-rails'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   gem 'pry-rails'

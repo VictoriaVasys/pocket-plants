@@ -1,7 +1,17 @@
 
 <div class="big-center">
   <h1>Pocket Plants</h1>
-  <%= image_tag("camera.png", class: 'home-camera-icon') %>
+  <div class="camera">
+    <video id="video">No stream available.</video>
+    <button id="startbutton">Take photo</button>
+  </div>
+  <!-- <%= image_tag("camera.png", class: 'home-camera-icon')%> -->
+  <canvas id="canvas">
+  </canvas>
+  <div class="output">
+    <img id="photo" alt="The screen capture will appear in this box.">
+  </div>
+   
   <h3>Click the camera to take a photo of plant!</h3>
 </div>
 
@@ -11,12 +21,12 @@
   <form class='form-inline'>
     <%= form_for @user, url: sessions_path do |f| %>
       <div class="form-group">
-        <%#= f.label :username %>
-        <%= f.email_field :email, placeholder: "email", class: "form-control" %>
+        <%= f.label :username %>
+        <%= f.email_field :email, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%#= f.label :password %>
-        <%= f.password_field :password, placeholder: "password", class: "form-control" %>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
       </div><br><br>
       <%= f.submit 'Log in', class: "btn btn-default login-button" %>
     <% end %><br>
