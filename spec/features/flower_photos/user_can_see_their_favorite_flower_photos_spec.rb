@@ -21,7 +21,7 @@ feature "An authenticated user", :js => :true do
     expect(page).to have_selector(".flower-photo", count: 2) 
     within first(".flower-photo") do
       expect(page).to have_content(flower_photo.assigned_name)
-      expect(page).to have_content("Plant Family: #{flower_photo.plant_family.taxonomic_name}")
+      expect(page).to have_content("#{flower_photo.plant_family.taxonomic_name}")
       expect(page).to have_css("img[src*='#{flower_photo.storage_url}']")
       expect(page).to have_content("Photographer: #{flower_photo.user.username}")
     end

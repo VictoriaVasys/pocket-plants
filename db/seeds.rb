@@ -5,13 +5,9 @@ DatabaseCleaner.clean_with(:truncation)
 class Seed
   def initialize
     generate_users
-    # generate_plant_families
+    generate_plant_families
     generate_flower_photos
-    # generate_favorites
-    # generate_comments
-    # generate_habitats
-    # generate plant_family_habitats
-    # generate_locations
+    generate_user_with_favorites
   end
   
   def generate_users
@@ -26,18 +22,25 @@ class Seed
     end
   end
   
+  def generate_plant_families
+    10.times do |i|
+      PlantFamily.create!(
+        common_name: Faker::Space.unique.moon, 
+        taxonomic_name: "#{Faker::Lorem.unique.word.capitalize} family"
+        )
+      puts "#{i} plant family created"
+    end
+  end
+  
   def generate_flower_photos
     10.times do |i|
       user = User.find(rand(1..User.count))
-      plant_family = PlantFamily.create!(
-        common_name: "Lily", 
-        taxonomic_name: Faker::Lorem.unique.word
-        )
+      plant_family = PlantFamily.find(rand(1..PlantFamily.count))
       FlowerPhoto.create!(
         assigned_name: Faker::Food.ingredient,
         storage_url: Faker::Internet.unique.url,
         user_id: user.id,
-        plant_family_id: 1
+        plant_family_id: plant_family.id
       )
       generate_gvision_descriptions(FlowerPhoto.last)
       generate_favorites(FlowerPhoto.last)
@@ -80,8 +83,25 @@ class Seed
     end
   end
   
+  def generate_user_with_favorites
+    User.create!(
+    email: 'vvasys@gmail.com',
+    username: 'victoi',
+    password: '123',
+    password_confirmation: '123'
+    )
+    FlowerPhoto.first.favorites.create(user_id: User.last.id)
+    FlowerPhoto.find(2).favorites.create(user_id: User.last.id)
+    FlowerPhoto.find(3).favorites.create(user_id: User.last.id)
+  end
+  
 end
 
 Seed.new
+
+
+
+
+
 
 

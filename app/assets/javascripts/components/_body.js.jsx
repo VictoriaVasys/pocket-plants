@@ -1,4 +1,4 @@
-var Body = React.createClass({
+var FavoriteFlowerPhotosBody = React.createClass({
   getInitialState() {
     return {
       currentUser: this.props.current_user
@@ -8,7 +8,7 @@ var Body = React.createClass({
   render() {
     return (
       <div>
-        <FavoriteFlowerPhotos currentUser="{this.state.currentUser}"/>
+        <FavoriteFlowerPhoto currentUser="{this.state.currentUser}"/>
       </div>
     )
   }
