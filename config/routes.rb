@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   resources :sessions, only: [:create]
   resources :users, only: [:create]
+  resources :flower_photos, only: [:index]
   namespace :users, path: ":username" do
     resources :favorite_flower_photos, only: [:index]
   end

@@ -1,4 +1,4 @@
-var Header = React.createClass({
+var FavoriteFlowerPhotosHeader = React.createClass({
   render() {
     return (
       <div>
