@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   
   resources :sessions, only: [:create]
   resources :users, only: [:create]
-  resources :flower_photos, only: [:index]
   namespace :users, path: ":username" do
     resources :favorite_flower_photos, only: [:index]
+    get '/:flower_photo_name' => 'flower_photos#show', as: :flower_photo
   end
+  resources :flower_photos, only: [:index]
   
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
         end
         get '/:user_id/favorite_flower_photos' => 'favorites#index', as: :favorite_flower_photos
         resources :flower_photos, only: [:show], concerns: :favorable do
-          resources :gvision_descriptions, only: [:create, :destroy] do
+          resources :gvision_descriptions, only: [:index, :create, :destroy] do
             post '/favorites' => 'gvision_descriptions/favorites#create', as: :favorites
             delete '/favorites/:id' => 'gvision_descriptions/favorites#destroy', as: :favorite
           end

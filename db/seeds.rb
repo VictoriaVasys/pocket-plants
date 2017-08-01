@@ -52,7 +52,7 @@ class Seed
   def generate_gvision_descriptions(flower_photo)
     3.times do |i|
       GvisionDescription.create!(
-        name: Faker::Coffee.notes,
+        name: Faker::Coffee.notes.split(', ')[2],
         flower_photo_id: flower_photo.id
       )
       generate_favorites(GvisionDescription.last)

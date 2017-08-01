@@ -94,6 +94,35 @@ FactoryGirl.define do
       end 
     end
     
+    factory :flower_photo_with_the_works do
+      after(:create) do |flower_photo|
+        3.times do 
+          flower_photo.favorites << create(
+            :favorite, 
+            favorable_id: flower_photo.id, 
+            favorable_type: "FlowerPhoto", 
+            user_id: create(:user).id
+          )
+        end
+          
+        3.times do 
+          flower_photo.gvision_descriptions << create(
+          :gvision_description_with_favorites, 
+          flower_photo_id: flower_photo.id
+          )
+        end
+        
+        3.times do 
+          flower_photo.comments << create(
+            :comment_with_favorites, 
+            commentable_id: flower_photo.id, 
+            commentable_type: "FlowerPhoto", 
+            user_id: create(:user).id
+          )
+        end 
+      end 
+    end
+    
   end
   
   factory :user do
