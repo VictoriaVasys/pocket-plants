@@ -1,4 +1,9 @@
 class Api::V1::Users::GvisionDescriptionsController < Api::V1::Users::BaseController
+  skip_before_action :authorize_user, only: [:index]
+  
+  def index
+    @gvision_descriptions = flower_photo.gvision_descriptions
+  end
   
   def create
     @gvision_description = flower_photo.gvision_descriptions.new(gvision_description_params)

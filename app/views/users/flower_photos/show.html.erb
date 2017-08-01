@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="flower-photo-show">
+    <%= react_component('FlowerPhoto', props={id: @flower_photo.id, current_user: current_user}) %>
+    <h4>Your flower could also be any of the following:</h4>
+    <%= react_component('GvisionDescriptions', props={id: @flower_photo.id}) %>
+    <br>
+    <h2>Comments</h2>
+    <hr>
+    <%= react_component('Comments', props={id: @flower_photo.id}) %>
+  </div>
+</div>
