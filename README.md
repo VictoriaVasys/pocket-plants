@@ -1,8 +1,9 @@
 # Pocket Plants
 * Victoria Vasys
-* https://www.pocket-plants.herokuapp.com
+* Productions: https://www.pocket-plants.herokuapp.com
 
-- [About](#about)
+## Table of Contents
+* [About](#about)
     * [Tech Stack](#tech-stack)
 * [Schema](#schema)
 * [Setup](#setup)
