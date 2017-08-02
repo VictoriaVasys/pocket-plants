@@ -2,18 +2,18 @@
 * Victoria Vasys
 * https://www.pocket-plants.herokuapp.com
 
-* (About)[#about]
-    * (Tech Stack)[#tech-stack]
-* (Schema)[#schema]
-* (Setup)[#setup]
-    * (Testing)[#testing]
-* (API Endpoints)[#api-endpoints]
-    * (Flower Photos)[#flower-photos]
-    * (Plant Families)[#plant-families]
-    * (Google Vision Descriptions)[#google-vision-descriptions]
-    * (Comments)[#comments]
-    * (Favorites)[#favorites]
-* (Links)[#links]
+- [About](#about)
+    * [Tech Stack](#tech-stack)
+* [Schema](#schema)
+* [Setup](#setup)
+    * [Testing](#testing)
+* [API Endpoints](#api-endpoints)
+    * [Flower Photos](#flower-photos)
+    * [Plant Families](#plant-families)
+    * [Google Vision Descriptions](#google-vision-descriptions)
+    * [Comments](#comments)
+    * [Favorites](#favorites)
+* [Links](#links)
 
 ## About
 Ever been on a plant walk, a forest hike, or even just a little jaunt through your neighborhood and thought, wow, that's a gorgeous flower! I wish I could have that in my front yard! Or, that looks super weird! I wonder what it is. Or, I think I've seen that before, I wonder if it's invasive. Never fear, pocket plants here!
@@ -70,6 +70,7 @@ Tests run via RSpec & Selenium Webdriver
 * Params for POST and PUT requests should be passed as x-www-form-urlencoded
 
 ### Flower Photos
+|**HTTP Verb/Method**|**URI Path**|**Description**|**Parameters**|
 | --- | --- |:---:| --- |
 |GET|flower_photos|retrieves all flower photos|N/A|
 |GET|users/flower_photos/:id|retrieves a flower_photo|N/A|
@@ -85,12 +86,14 @@ Tests run via RSpec & Selenium Webdriver
 |GET|plant_families/find|retrieves a plant family by name|?common_name=<string>` or `?taxonomic_name=<string>`|
 
 ### Google Vision Descriptions
+|**HTTP Verb/Method**|**URI Path**|**Description**|**Parameters**|
 | --- | --- |:---:| --- |
 |GET|users/flower_photos/:flower_photo_id/gvision_descriptions|retrieves all google vision descriptions for a flower photo|N/A|
 |POST|users/flower_photos/:flower_photo_id/gvision_descriptions|creates a flower photo google vision description|N/A|
 |DELETE|users/flower_photos/:flower_photo_id/gvision_descriptions/:id|deletes a flower photo google vision description|N/A|
 
 ### Comments
+|**HTTP Verb/Method**|**URI Path**|**Description**|**Parameters**|
 | --- | --- |:---:| --- |
 |GET|users/flower_photos/:flower_photo_id/comments|retrieves all comments for a flower photo|N/A|
 |GET|users/flower_photos/:flower_photo_id/comments/:id|retrieves a comments for a flower photo|N/A|
@@ -100,6 +103,7 @@ Tests run via RSpec & Selenium Webdriver
 
 
 ### Favorites
+|**HTTP Verb/Method**|**URI Path**|**Description**|**Parameters**|
 | --- | --- |:---:| --- |
 |GET|users/:user_id/favorite_flower_photos|retrieves a user's favorite flower photos|N/A|
 |GET|users/flower_photos/:flower_photo_id/favorites|retrieves favorites for a flower photo|N/A|
